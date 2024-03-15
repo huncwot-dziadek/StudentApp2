@@ -5,6 +5,9 @@
 
         private List<float> grades = new List<float>();
 
+        public static List<Student> allStudentsFromFile = new List<Student>();
+
+        public static string fileName;
 
         private bool oneOfTheConditionsIsMet;
 
@@ -27,7 +30,10 @@
 
             if (grade >= 0 && grade <= 100)
             {
-                this.grades.Add(grade);
+            using (var writer = File.AppendText(fileName))
+                {
+                    writer.WriteLine(grade);
+                }
             }
             else
             {
