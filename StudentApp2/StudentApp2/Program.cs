@@ -2,11 +2,13 @@
 using static StudentApp.Student;
 
 List<Student> allStudentsFromFile = new List<Student>();
+List<Student> allStudents = new List<Student>();
+
 List<Student> studentsWithMaximumGrade = new List<Student>();
 List<Student> studentsWithMaximumAverage = new List<Student>();
 
-string fileIn = "AllStudents.txt";
-int lineCount = File.ReadAllLines(fileIn).Length;
+//string fileIn = "AllStudents.txt";
+//int lineCount = File.ReadAllLines(fileIn).Length;
 
 string fileOut = "ResultsAllStudents.txt";
 File.Create(fileOut).Close();
@@ -20,7 +22,16 @@ Console.WriteLine("This is the first huncwot program");
 Console.WriteLine("Here we go");
 Console.WriteLine();
 
-LoadingListStudentsFromFile(fileIn);
+Student student1 = new Student("Maria", "Kowalska");
+allStudentsFromFile.Add(student1);
+Student student2 = new Student("Zenon", "Malinka");
+allStudentsFromFile.Add(student2);
+Student student3 = new Student("Hanna", "Wanna");
+allStudentsFromFile.Add(student3);
+Student student4 = new Student("Jan", "Dzban");
+allStudentsFromFile.Add(student4);
+
+//LoadingListStudentsFromFile(fileIn);
 
 Console.WriteLine("Your grade should be in the range:");
 Console.WriteLine("1, +1, 1+, -2, 2-, 2, +2, 2+, -3, 3-, 3, +3, 3+ ........ -5, 5-, 5, +5, 5+, -6, 6-, 6");
@@ -34,23 +45,23 @@ WritingToFile();
 
 FindStudentsWithTheBestStatistics();
 
-void LoadingListStudentsFromFile(string filePath)
-{
-    for (int i = 0; i < lineCount; i++)
-    {
-        string studentNameAndSurname = File.ReadLines(filePath)
-        .Where(line => !string.IsNullOrWhiteSpace(line))
-        .Skip(i)
-        .FirstOrDefault();
+//void LoadingListStudentsFromFile(string filePath)
+//{
+//    for (int i = 0; i < lineCount; i++)
+//    {
+//        string studentNameAndSurname = File.ReadLines(filePath)
+//        .Where(line => !string.IsNullOrWhiteSpace(line))
+//        .Skip(i)
+//        .FirstOrDefault();
 
-        string[] wordsStudent = studentNameAndSurname.Split(' ');
+//        string[] wordsStudent = studentNameAndSurname.Split(' ');
 
-        Student anotherStudentFromFile = new Student(wordsStudent[0], wordsStudent[1]);
-        allStudentsFromFile.Add(anotherStudentFromFile);
-    }
+//        Student anotherStudentFromFile = new Student(wordsStudent[0], wordsStudent[1]);
+//        allStudentsFromFile.Add(anotherStudentFromFile);
+//    }
 
-    Student anotherStudent = allStudentsFromFile[0];
-}
+//    Student anotherStudent = allStudentsFromFile[0];
+//}
 
 void AddingStudentGradesForAllSubjects()
 {
