@@ -20,8 +20,8 @@ Student student1 = new Student("Maria", "Kowalska");
 Student.allStudentsFromFile.Add(student1);
 Student student2 = new Student("Zenon", "Malinka");
 Student.allStudentsFromFile.Add(student2);
-Student student3 = new Student("Hanna", "Wanna");
-Student.allStudentsFromFile.Add(student3);
+//Student student3 = new Student("Hanna", "Wanna");
+//Student.allStudentsFromFile.Add(student3);
 //Student student4 = new Student("Jan", "Dzban");
 //Student.allStudentsFromFile.Add(student4);
 
@@ -60,6 +60,7 @@ void AddingStudentsGradesAndWritingToFile()
             try
             {
                 anotherStudent.AddGrade(grade);
+
                 numberOfSubjects++;
             }
             catch (Exception ex)
@@ -72,7 +73,6 @@ void AddingStudentsGradesAndWritingToFile()
         Console.WriteLine();
     }
 }
-
 void FindStudentsWithTheBestStatistics()
 {
     var gradeMax = float.MinValue;
@@ -122,10 +122,19 @@ void WritingToFile()
 {
     foreach (var student in allStudentsFromFile)
     {
-        using (var writer = File.AppendText(fileOut))
-        {
-            writer.WriteLine($"{student.Surname} {student.Name} {student.GetStatistics().Max} {student.GetStatistics().Average}");
-        }
+        student.GetStatistics();
+
+        Console.WriteLine();
+        Console.WriteLine($"{student.Surname} {student.Name} {student.GetStatistics().Max} {student.GetStatistics().Average}");
+
+
+
+
+
+        //using (var writer = File.AppendText(fileOut))
+        //{
+        //    writer.WriteLine($"{student.Surname} {student.Name} {student.GetStatistics().Max} {student.GetStatistics().Average}");
+        //}
     }
 }
 

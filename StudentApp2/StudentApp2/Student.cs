@@ -26,8 +26,6 @@
 
         public override void AddGrade(float grade)
         {
-            Statistics statistics = new Statistics();
-
             if (grade >= 0 && grade <= 100)
             {
             using (var writer = File.AppendText(fileName))
@@ -99,14 +97,39 @@
 
         public override Statistics GetStatistics()
         {
+
             var statistics = new Statistics();
 
-            foreach (var grade in grades)
+            if (File.Exists(fileName))
             {
-                statistics.AddGrade(grade);
-            }
+                using (var reader = File.OpenText(fileName))
+                {
+                    var line = reader.ReadLine();
 
+                    while (line != null)
+                    {
+                        //var line = reader.ReadLine();
+                        if (float.TryParse(line, out float number))
+                        {
+                            statistics.AddGrade(number);
+                        }
+                        line = reader.ReadLine();
+                    }
+                }
+            }
             return statistics;
         }
+
+        //public override Statistics GetStatistics()
+        //{
+        //    var statistics = new Statistics();
+
+        //    foreach (var grade in grades)
+        //    {
+        //        statistics.AddGrade(grade);
+        //    }
+
+        //    return statistics;
+        //}
     }
 }
