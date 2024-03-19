@@ -16,12 +16,12 @@ Console.WriteLine("This is the first huncwot program");
 Console.WriteLine("Here we go");
 Console.WriteLine();
 
-Student student1 = new Student("Maria", "Kowalska");
+Student student1 = new Student("Maria", "Aowalska");
 Student.allStudentsFromFile.Add(student1);
-Student student2 = new Student("Zenon", "Malinka");
+Student student2 = new Student("Zenon", "Balinka");
 Student.allStudentsFromFile.Add(student2);
-//Student student3 = new Student("Hanna", "Wanna");
-//Student.allStudentsFromFile.Add(student3);
+Student student3 = new Student("Hanna", "Canna");
+Student.allStudentsFromFile.Add(student3);
 //Student student4 = new Student("Jan", "Dzban");
 //Student.allStudentsFromFile.Add(student4);
 
@@ -122,7 +122,10 @@ void WritingToFile()
 {
     foreach (var student in allStudentsFromFile)
     {
-        student.GetStatistics();
+       // Student.fileName = $"{student.Name} {student.Surname}.txt";
+
+
+        //student.GetStatistics();
 
         Console.WriteLine();
         Console.WriteLine($"{student.Surname} {student.Name} {student.GetStatistics().Max} {student.GetStatistics().Average}");

@@ -97,27 +97,35 @@
 
         public override Statistics GetStatistics()
         {
+            //foreach (var student in allStudentsFromFile)
+            //{
 
-            var statistics = new Statistics();
+                //Student student = Student.allStudentsFromFile[0];
 
-            if (File.Exists(fileName))
-            {
-                using (var reader = File.OpenText(fileName))
+                //Student.fileName = $"{student.Name} {student.Surname}.txt";
+
+                var statistics = new Statistics();
+
+                if (File.Exists(fileName))
                 {
-                    var line = reader.ReadLine();
-
-                    while (line != null)
+                    using (var reader = File.OpenText(fileName))
                     {
-                        //var line = reader.ReadLine();
-                        if (float.TryParse(line, out float number))
+                        var line = reader.ReadLine();
+
+                        while (line != null)
                         {
-                            statistics.AddGrade(number);
+                            //var line = reader.ReadLine();
+                            if (float.TryParse(line, out float number))
+                            {
+                                statistics.AddGrade(number);
+                            }
+                            line = reader.ReadLine();
                         }
-                        line = reader.ReadLine();
                     }
                 }
-            }
-            return statistics;
+                return statistics;
+
+            //}
         }
 
         //public override Statistics GetStatistics()
